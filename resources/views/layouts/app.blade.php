@@ -30,6 +30,8 @@
         @include('includes.layouts.navbar')
 
         <main class="container py-4">
+            @include('includes.alert')
+
             @yield('content')
         </main>
 
