@@ -8,7 +8,7 @@
     <h1 class="pb-4 mb-4 border-bottom">Projects</h1>
 </header>
 
-<table class="table table-hover border">
+<table class="table table-hover border mb-4">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -53,7 +53,11 @@
         @endforelse
 
     </tbody>
-  </table>
+</table>
+
+@if($projects->hasPages())
+    {{ $projects->links() }}
+@endif
 
 @endsection
 
