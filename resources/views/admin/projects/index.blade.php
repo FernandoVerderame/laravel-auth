@@ -5,7 +5,7 @@
 @section('content')
 
 <header>
-    <h1 class="pb-4 mb-4 border-bottom">Projects</h1>
+    <h1 class="pb-4 mb-4 mt-3 border-bottom">Projects</h1>
 </header>
 
 <table class="table table-hover border mb-4">
