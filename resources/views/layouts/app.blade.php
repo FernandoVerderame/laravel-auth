@@ -8,12 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    @yield('cdns')
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -81,10 +83,12 @@
             </div>
         </nav>
 
-        <main class="">
+        <main class="container">
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts')
 </body>
 
 </html>
