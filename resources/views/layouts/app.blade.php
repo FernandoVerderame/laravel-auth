@@ -24,7 +24,7 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body class="bg-secondary">
+<body class="bg-light">
     <div id="app">
 
         @include('includes.layouts.navbar')
