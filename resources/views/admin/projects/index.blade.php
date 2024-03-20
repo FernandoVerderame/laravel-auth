@@ -47,8 +47,8 @@
             <td>{{ $project->is_completed ? 'Completed' : 'Work in progress' }}</td>
 
             {{-- TODO date formatted --}}
-            <td>{{ $project->created_at }}</td>
-            <td>{{ $project->updated_at }}</td>
+            <td>{{ $project->getFormattedDate('created_at') }}</td>
+            <td>{{ $project->getFormattedDate('updated_at') }}</td>
             <td>
                 <div class="d-flex justify-content-end gap-2">
                     <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-sm btn-primary">
