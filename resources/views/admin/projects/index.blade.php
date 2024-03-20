@@ -5,7 +5,7 @@
 @section('content')
 
 <header class="d-flex align-items-center justify-content-between pb-4 mb-4 mt-3 border-bottom">
-    <h1 class="">Projects</h1>
+    <h1>Projects</h1>
 
     <form action="{{ route('admin.projects.index') }}" method="GET">
         <div class="input-group">
