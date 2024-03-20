@@ -78,9 +78,12 @@ class ProjectController extends Controller
     {
         $data = $request->all();
 
+        $data['slug'] = Str::slug($project->title);
+        $data['is_completed'] = Arr::exists($data, 'is_completed');
+
         $project->update($data);
 
-        return to_route('admin.projects.show', $project->id);
+        return to_route('admin.projects.show', $project->id)->with('type', 'success')->with('message', 'Project successfully edited!');
     }
 
     /**
