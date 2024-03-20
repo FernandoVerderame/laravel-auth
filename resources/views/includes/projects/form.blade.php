@@ -9,7 +9,7 @@
 
     <div class="row">
 
-        <div class="col-12">
+        <div class="col-6">
             <div class="mb-4">
                 <label for="title" class="form-label h3">Title</label>
                 <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @elseif(old('title', '')) is-valid @enderror" placeholder="Ex.: Laravel DC Comics" value="{{ old('title', $project->title) }}" required>
@@ -23,6 +23,13 @@
                 </div>
                 @enderror
             </div>
+        </div>
+        
+        <div class="col-6">
+            <div class="mb-4">
+                <label for="slug" class="form-label h3">Slug</label>
+                <input type="text" id="slug" class="form-control" value="{{ Str::slug(old('title', $project->title)) }}" disabled> 
+            </div>   
         </div>
 
         <div class="col-12">
