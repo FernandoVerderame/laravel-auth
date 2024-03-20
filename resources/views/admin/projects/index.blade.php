@@ -4,8 +4,19 @@
 
 @section('content')
 
-<header>
+<header class="d-flex align-items-center justify-content-between">
     <h1 class="pb-4 mb-4 mt-3 border-bottom">Projects</h1>
+
+    <form action="{{ route('admin.projects.index') }}" method="GET">
+        <div class="input-group">
+            <select class="form-select" name="filter">
+                <option value="">All</option>
+                <option value="completed" @if($filter === 'completed') selected @endif>Completed</option>
+                <option value="drafts" @if($filter === 'drafts') selected @endif>Work in progress</option>
+            </select>
+            <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-filter me-2"></i>Status</button>
+        </div>
+    </form>
 </header>
 
 <table class="table table-hover border mb-4">
