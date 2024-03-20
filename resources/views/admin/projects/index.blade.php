@@ -29,7 +29,9 @@
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{ route('admin.projects.trash') }}" class="btn btn-sm btn-secondary"><i class="fa-solid fa-trash me-2"></i>Show trash</a>
+
                     <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Project</a>
                 </div>
             </th>
@@ -43,6 +45,8 @@
             <td>{{ $project->title }}</td>
             <td>{{ $project->slug }}</td>
             <td>{{ $project->is_completed ? 'Completed' : 'Work in progress' }}</td>
+
+            {{-- TODO date formatted --}}
             <td>{{ $project->created_at }}</td>
             <td>{{ $project->updated_at }}</td>
             <td>
