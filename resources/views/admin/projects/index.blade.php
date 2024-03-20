@@ -28,7 +28,11 @@
             <th scope="col">Status</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
-            <th></th>
+            <th>
+                <div class="d-flex justify-content-end">
+                    <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-success"><i class="fa-solid fa-plus me-2"></i>New Project</a>
+                </div>
+            </th>
         </tr>
     </thead>
     <tbody>
