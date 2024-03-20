@@ -22,7 +22,7 @@
         <div class="row">
             @if($project->image)
                 <div class="col-3">
-                    <img src="{{ $project->image }}" alt="{{ $project->title }}">
+                    <img src="{{ $project->image }}" class="img-fluid" alt="{{ $project->title }}">
                 </div>
             @endif
 
