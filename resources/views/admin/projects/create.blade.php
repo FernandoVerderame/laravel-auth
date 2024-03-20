@@ -31,18 +31,23 @@
             </div>
         </div>
 
-        <div class="col-12">
-            <div class="pb-4 border-bottom">
+        <div class="col-11">
+            <div class="mb-5">
                 <label for="image" class="form-label h3">URL Image</label>
                 <div class="input-group">
                     <input type="url" name="image" id="image" class="form-control" placeholder="Ex.: https:://..." value="{{ old('image', '') }}">
                 </div>
             </div>
         </div>
+        <div class="col-1  d-flex align-items-center">
+            <div class="">
+                <img src="{{ old('image', 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=') }}" class="img-fluid vertical-align-middle" alt="project image" id="preview">
+            </div>
+        </div>
 
     </div>
 
-    <footer class="d-flex justify-content-between align-items-center mt-4">
+    <footer class="d-flex justify-content-between align-items-center pt-4 border-top">
         <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left me-2"></i>Back to projects</a>
     
         <div>
@@ -53,6 +58,16 @@
 
 </form>
 
+@endsection
 
+@section('scripts')
+<script>
+    const placeholder = 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=';
+    const input = document.getElementById('image');
+    const preview = document.getElementById('preview');
 
+    input.addEventListener('input', () => {
+        preview.src = input.value || placeholder; 
+    })
+</script>
 @endsection
