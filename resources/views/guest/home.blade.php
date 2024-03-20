@@ -15,8 +15,10 @@
 
 @forelse ($projects as $project)
 <div class="card my-5">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center justify-content-between">
         {{ $project->title }}
+
+        <a href="{{ route('guest.projects.show', $project->slug) }}" class="btn btn-sm btn-primary">Show</a>
     </div>
     <div class="card-body">
         <div class="row">
@@ -33,7 +35,7 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 @empty
     <h3 class="text-center">There aren't any projects!</h3>
 @endforelse
