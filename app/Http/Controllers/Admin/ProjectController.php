@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -44,6 +45,21 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|min:5|max:50|unique:projects',
+            'description' => 'required|string',
+            'image' => 'nullable|url',
+            'is_completed' => 'nullable|boolean'
+        ], [
+            'title.required' => 'Title must be mandatory',
+            'title.min' => 'Title must be at least :min characters',
+            'title.max' => 'Title must be a maximum of :max characters',
+            'title.unique' => 'There cannot be two projects with the same title',
+            'image.url' => 'URL image is invalid',
+            'is_completed' => 'The value of the completed field is invalid',
+            'description.required' => 'Description must be mandatory'
+        ]);
+
         $data = $request->all();
 
         $project = new Project();
@@ -78,6 +94,21 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        $request->validate([
+            'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('projects')->ignore($project->id)],
+            'description' => 'required|string',
+            'image' => 'nullable|url',
+            'is_completed' => 'nullable|boolean'
+        ], [
+            'title.required' => 'Title must be mandatory',
+            'title.min' => 'Title must be at least :min characters',
+            'title.max' => 'Title must be a maximum of :max characters',
+            'title.unique' => 'There cannot be two projects with the same title',
+            'image.url' => 'URL image is invalid',
+            'is_completed' => 'The value of the completed field is invalid',
+            'description.required' => 'Description must be mandatory'
+        ]);
+
         $data = $request->all();
 
         $data['slug'] = Str::slug($project->title);
