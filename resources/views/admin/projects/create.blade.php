@@ -41,6 +41,17 @@
 
     </div>
 
+    <footer class="d-flex justify-content-between align-items-center mt-4">
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary"><i class="fa-solid fa-arrow-rotate-left me-2"></i>Back to projects</a>
+    
+        <div>
+            <button type="reset" class="btn btn-secondary me-2">Refresh input</button>
+            <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk me-2"></i>Save</button>
+        </div>
+    </footer>
+    
 </form>
+
+
 
 @endsection
