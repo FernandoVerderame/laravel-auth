@@ -59,7 +59,7 @@
 
         @empty 
             <tr>
-                <td colspan="6">
+                <td colspan="7">
                     <h3>There aren't any projects.</h3>
                 </td>
             </tr>
