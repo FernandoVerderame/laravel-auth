@@ -30,6 +30,11 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('', AdminHomeController::class)->name('home');
 
     // Projects Admin routes
+
+    Route::get('/projects/trash', [AdminProjectController::class, 'trash'])->name('projects.trash');
+    Route::patch('/projects/{project}/restore', [AdminProjectController::class, 'restore'])->name('projects.restore')->withtrashed();
+    Route::delete('/projects/{project}/drop', [AdminProjectController::class, 'drop'])->name('projects.drop')->withtrashed();
+
     Route::resource('projects', AdminProjectController::class);
 });
 
