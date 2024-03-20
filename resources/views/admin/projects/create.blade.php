@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="col-11">
+        <div class="col-10">
             <div class="mb-5">
                 <label for="image" class="form-label h3">URL Image</label>
                 <div class="input-group">
@@ -42,6 +42,12 @@
         <div class="col-1  d-flex align-items-center">
             <div class="">
                 <img src="{{ old('image', 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=') }}" class="img-fluid vertical-align-middle" alt="project image" id="preview">
+            </div>
+        </div>
+        <div class="col-1 d-flex align-items-center">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="is_completed" name="is_completed" @if(old('is_completed', '')) checked @endif>
+                <label class="form-check-label" for="is_completed">Completed</label>
             </div>
         </div>
 
