@@ -17,7 +17,7 @@
             <div class="mb-4">
                 <label for="title" class="form-label h3">Title</label>
                 <div class="input-group">
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Ex.: Laravel DC Comics" value="{{ old('title', '') }}">
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Ex.: Laravel DC Comics" value="{{ old('title', '') }}" required>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="mb-4">
                 <label for="description" class="form-label h3">Description</label>
                 <div class="input-group">
-                    <textarea type="text" name="description" id="description" class="form-control" placeholder="Project description..." rows="10">{{ old('description', '') }}</textarea>
+                    <textarea type="text" name="description" id="description" class="form-control" placeholder="Project description..." rows="10" required>{{ old('description', '') }}</textarea>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="col-1  d-flex align-items-center">
             <div class="">
-                <img src="{{ old('image', 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=') }}" class="img-fluid vertical-align-middle" alt="project image" id="preview">
+                <img src="{{ old('image', 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=') }}" class="img-fluid" alt="project image" id="preview">
             </div>
         </div>
         <div class="col-1 d-flex align-items-center">
