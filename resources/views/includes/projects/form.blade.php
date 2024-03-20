@@ -1,38 +1,59 @@
 @if($project->exists)
-    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" novalidate>
         @method('PUT')
 @else 
-    <form action="{{ route('admin.projects.store') }}" method="POST">
+    <form action="{{ route('admin.projects.store') }}" method="POST" novalidate>
 @endif
 
     @csrf
 
     <div class="row">
 
-        <div class="col-6">
+        <div class="col-12">
             <div class="mb-4">
                 <label for="title" class="form-label h3">Title</label>
-                <div class="input-group">
-                    <input type="text" name="title" id="title" class="form-control" placeholder="Ex.: Laravel DC Comics" value="{{ old('title', $project->title) }}" required>
+                <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @elseif(old('title', '')) is-valid @enderror" placeholder="Ex.: Laravel DC Comics" value="{{ old('title', $project->title) }}" required>
+                @error('title')
+                <div class="invalid-feedback">
+                    {{ $message }}
                 </div>
+                @else 
+                <div class="form-text">
+                    Add project's title
+                </div>
+                @enderror
             </div>
         </div>
 
         <div class="col-12">
             <div class="mb-4">
                 <label for="description" class="form-label h3">Description</label>
-                <div class="input-group">
-                    <textarea type="text" name="description" id="description" class="form-control" placeholder="Project description..." rows="10" required>{{ old('description', $project->description) }}</textarea>
+                <textarea type="text" name="description" id="description" class="form-control @error('description') is-invalid @elseif(old('description', '')) is-valid @enderror" placeholder="Project description..." rows="10" required>{{ old('description', $project->description) }}</textarea>
+                @error('description')
+                <div class="invalid-feedback">
+                    {{ $message }}
                 </div>
+                @else 
+                <div class="form-text">
+                    Add project's description
+                </div>
+                @enderror
             </div>
         </div>
 
         <div class="col-10">
-            <div class="mb-5">
+            <div class="mb-4">
                 <label for="image" class="form-label h3">URL Image</label>
-                <div class="input-group">
-                    <input type="url" name="image" id="image" class="form-control" placeholder="Ex.: https:://..." value="{{ old('image', $project->image) }}">
+                <input type="url" name="image" id="image" class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" placeholder="Ex.: https:://..." value="{{ old('image', $project->image) }}">
+                @error('image')
+                <div class="invalid-feedback">
+                    {{ $message }}
                 </div>
+                @else 
+                <div class="form-text">
+                    Add an absolute URL of an image file
+                </div>
+                @enderror
             </div>
         </div>
         <div class="col-1  d-flex align-items-center">
