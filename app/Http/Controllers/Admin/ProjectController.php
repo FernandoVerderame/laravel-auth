@@ -46,11 +46,11 @@ class ProjectController extends Controller
         $project = new Project();
 
         $project->fill($data);
-        $project->slug = Str::slug($data['title']);
+        $project->slug = Str::slug($project->title);
 
         $project->save();
 
-        return to_route('admin.projects.show', $project->id);
+        return to_route('admin.projects.show', $project->id)->with('type', 'success')->with('message', 'New project successfully created!');
     }
 
     /**
@@ -88,6 +88,6 @@ class ProjectController extends Controller
     {
         $project->delete();
 
-        return to_route('admin.projects.index')->with('type', 'danger')->with('message', 'Project successfully deleted');
+        return to_route('admin.projects.index')->with('type', 'danger')->with('message', 'Project successfully deleted!');
     }
 }
