@@ -178,4 +178,18 @@ class ProjectController extends Controller
 
         return to_route('admin.projects.trash')->with('type', 'success')->with('message', 'Project permanently deleted!');
     }
+
+
+    // Completion ruote
+    public function toggleCompletion(Project $project)
+    {
+        $project->is_completed = !$project->is_completed;
+
+        $project->save();
+
+        $action = $project->is_completed ? 'completed' : 'saved as a draft';
+        $type = $project->is_completed ? 'success' : 'info';
+
+        return back()->with('type', $type)->with('message', "Project $project->title has been $action");
+    }
 }
