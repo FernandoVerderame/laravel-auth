@@ -35,6 +35,8 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::patch('/projects/{project}/restore', [AdminProjectController::class, 'restore'])->name('projects.restore')->withtrashed();
     Route::delete('/projects/{project}/drop', [AdminProjectController::class, 'drop'])->name('projects.drop')->withtrashed();
 
+    Route::patch('/projects/{project}/complete', [AdminProjectController::class, 'toggleCompletion'])->name('projects.complete');
+
     Route::resource('projects', AdminProjectController::class)->withTrashed(['show', 'edit', 'update']);
 });
 
