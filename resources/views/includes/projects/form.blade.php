@@ -58,7 +58,7 @@
                 </div>
                 @else 
                 <div class="form-text">
-                    Add an absolute URL of an image file
+                    Upload image file
                 </div>
                 @enderror
             </div>
