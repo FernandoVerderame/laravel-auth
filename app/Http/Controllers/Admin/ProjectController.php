@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
@@ -68,6 +69,13 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->title);
         $project->is_completed = Arr::exists($data, 'is_completed');
+
+        // New file check
+        if (Arr::exists($data, 'image')) {
+            // Save URL
+            $img_url = Storage::putFile('project_images', $data['image']);
+            $project->image = $img_url;
+        }
 
         $project->save();
 
