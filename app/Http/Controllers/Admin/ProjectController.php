@@ -72,8 +72,10 @@ class ProjectController extends Controller
 
         // New file check
         if (Arr::exists($data, 'image')) {
+            $extension = $data['image']->extension();
+
             // Save URL
-            $img_url = Storage::putFile('project_images', $data['image']);
+            $img_url = Storage::putFileAs('project_images', $data['image'], "$project->slug.$extension");
             $project->image = $img_url;
         }
 
@@ -121,7 +123,7 @@ class ProjectController extends Controller
 
         $data = $request->all();
 
-        $data['slug'] = Str::slug($project->title);
+        $data['slug'] = Str::slug($data['title']);
         $data['is_completed'] = Arr::exists($data, 'is_completed');
 
         // New file check
@@ -129,8 +131,10 @@ class ProjectController extends Controller
             // Check if there is an old image
             if ($project->image) Storage::delete($project->image);
 
+            $extension = $data['image']->extension();
+
             // Save URL
-            $img_url = Storage::putFile('project_images', $data['image']);
+            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$extension");
             $project->image = $img_url;
         }
 
