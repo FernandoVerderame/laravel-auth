@@ -10,7 +10,7 @@
 
 <div class="clearfix pb-4 border-bottom">
     @if($project->image)
-        <img src="{{ Vite::asset('public/storage/' . $project->image) }}" class="img-fluid" alt="{{ $project->title }}" class="me-2 float-start">
+        <img src="{{ $project->printImage() }}" class="img-fluid" alt="{{ $project->title }}" class="me-2 float-start">
     @endif
     <p>{{ $project->description }}</p>
     <div>
