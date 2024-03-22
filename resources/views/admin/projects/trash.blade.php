@@ -10,7 +10,7 @@
     <a href="{{ route('admin.projects.index') }}" class="btn btn-sm btn-success">Show active projects</a>
 </header>
 
-<table class="table table-hover border mb-4">
+<table class="table table-hover table-dark border mb-4">
     <thead>
         <tr>
             <th scope="col">#</th>
