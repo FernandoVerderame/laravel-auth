@@ -2,6 +2,12 @@ const placeholder = 'https://media.istockphoto.com/id/1147544807/vector/thumbnai
 const imageField = document.getElementById('image');
 const previewField = document.getElementById('preview');
 
+// Button & input-group
+const changeImageButton = document.getElementById('change-image-button');
+const previousImageField = document.getElementById('previous-image-field');
+
+
+// ! Preview image
 let blobUrl;
 
 imageField.addEventListener('change', () => {
@@ -23,4 +29,14 @@ imageField.addEventListener('change', () => {
 
 window.addEventListener('beforeunload', () => {
     if (blobUrl) URL.revokeObjectURL(blobUrl);
+})
+
+
+// ! Input field
+// On click button change input show
+changeImageButton.addEventListener('click', () => {
+    previousImageField.classList.add('d-none');
+    imageField.classList.remove('d-none');
+    previewField.src = placeholder;
+    imageField.click();
 })

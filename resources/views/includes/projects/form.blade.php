@@ -51,7 +51,14 @@
         <div class="col-10">
             <div class="mb-4">
                 <label for="image" class="form-label h3">URL Image</label>
-                <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" placeholder="Ex.: https:://..." value="{{ old('image', $project->image) }}">
+
+                <div @class(['input-group', 'd-none' => !$project->image]) id="previous-image-field">
+                    <button class="btn btn-outline-secondary" type="button" id="change-image-button">Change image</button>
+                    <input type="text" class="form-control" value="{{ old('image', $project->image) }}" disabled>
+                </div>
+
+                <input type="file" name="image" id="image" class="form-control @if($project->image) d-none @endif @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" placeholder="Ex.: https:://...">
+                
                 @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
