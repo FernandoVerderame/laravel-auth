@@ -51,7 +51,7 @@
         <div class="col-10">
             <div class="mb-4">
                 <label for="image" class="form-label h3">URL Image</label>
-                <input type="url" name="image" id="image" class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" placeholder="Ex.: https:://..." value="{{ old('image', $project->image) }}">
+                <input type="file" name="image" id="image" class="form-control @error('image') is-invalid @elseif(old('image', '')) is-valid @enderror" placeholder="Ex.: https:://..." value="{{ old('image', $project->image) }}">
                 @error('image')
                 <div class="invalid-feedback">
                     {{ $message }}
