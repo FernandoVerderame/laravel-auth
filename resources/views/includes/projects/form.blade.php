@@ -67,7 +67,7 @@
             <div class="">
                 <img src="{{ old('image', $project->image) 
                 ? $project->printImage() 
-                : 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=' }}" class="img-fluid" alt="project image" id="preview">
+                : 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=' }}" class="img-fluid" alt="{{ $project->image ? $project->title : 'preview' }}" id="preview">
             </div>
         </div>
         <div class="col-1 d-flex align-items-center">
