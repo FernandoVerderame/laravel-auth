@@ -48,15 +48,16 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|min:5|max:50|unique:projects',
             'description' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',
             'is_completed' => 'nullable|boolean'
         ], [
             'title.required' => 'Title must be mandatory',
             'title.min' => 'Title must be at least :min characters',
             'title.max' => 'Title must be a maximum of :max characters',
             'title.unique' => 'There cannot be two projects with the same title',
-            'image.url' => 'URL image is invalid',
-            'is_completed' => 'The value of the completed field is invalid',
+            'image.image' => 'The added file is not an image',
+            'image.mimes' => 'Valid extensions are .png, .jpg, .jpeg',
+            'is_completed.boolean' => 'The value of the completed field is invalid',
             'description.required' => 'Description must be mandatory'
         ]);
 
@@ -97,15 +98,16 @@ class ProjectController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'min:5', 'max:50', Rule::unique('projects')->ignore($project->id)],
             'description' => 'required|string',
-            'image' => 'nullable|url',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg',
             'is_completed' => 'nullable|boolean'
         ], [
             'title.required' => 'Title must be mandatory',
             'title.min' => 'Title must be at least :min characters',
             'title.max' => 'Title must be a maximum of :max characters',
             'title.unique' => 'There cannot be two projects with the same title',
-            'image.url' => 'URL image is invalid',
-            'is_completed' => 'The value of the completed field is invalid',
+            'image.image' => 'The added file is not an image',
+            'image.mimes' => 'Valid extensions are .png, .jpg, .jpeg',
+            'is_completed.boolean' => 'The value of the completed field is invalid',
             'description.required' => 'Description must be mandatory'
         ]);
 
