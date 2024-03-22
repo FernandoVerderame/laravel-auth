@@ -124,6 +124,16 @@ class ProjectController extends Controller
         $data['slug'] = Str::slug($project->title);
         $data['is_completed'] = Arr::exists($data, 'is_completed');
 
+        // New file check
+        if (Arr::exists($data, 'image')) {
+            // Check if there is an old image
+            if ($project->image) Storage::delete($project->image);
+
+            // Save URL
+            $img_url = Storage::putFile('project_images', $data['image']);
+            $project->image = $img_url;
+        }
+
         $project->update($data);
 
         return to_route('admin.projects.show', $project->id)->with('type', 'success')->with('message', 'Project successfully edited!');
@@ -158,6 +168,8 @@ class ProjectController extends Controller
 
     public function drop(Project $project)
     {
+        if ($project->image) Storage::delete($project->image);
+
         $project->forceDelete();
 
         return to_route('admin.projects.trash')->with('type', 'success')->with('message', 'Project permanently deleted!');
