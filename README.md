@@ -47,3 +47,12 @@ Completiamo le CRUD mancanti per il vostro sito portfolio!
 
 ### SUPER BONUS
 - Implementare la modale di bootstrap per la cancellazione.
+
+## Esercizio di oggi: Laravel Boolfolio - Upload Immagini
+### Descrizione:
+Aggiungiamo la possibilità di inserire un immagine per i progetti. L'immagine deve essere inserita come file, come abbiamo visto in classe.
+
+Se non avevate già previsto un campo per l'immagine nella tabella dei projects potete aggiungerlo con una migration.
+
+### BONUS
+Tutte le cosette varie che abbiamo visto in classe!
