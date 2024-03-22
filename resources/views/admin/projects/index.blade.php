@@ -25,7 +25,7 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Slug</th>
-            <th scope="col">Status</th>
+            <th scope="col">Completed</th>
             <th scope="col">Created</th>
             <th scope="col">Updated</th>
             <th>
@@ -44,9 +44,16 @@
             <th scope="row">{{ $project->id }}</th>
             <td>{{ $project->title }}</td>
             <td>{{ $project->slug }}</td>
-            <td>{{ $project->is_completed ? 'Completed' : 'Work in progress' }}</td>
-
-            {{-- TODO date formatted --}}
+            <td>
+                <form action="{{ route('admin.projects.complete', $project->id) }}" method="POST" class="completion-form">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="button" id="is_completed" @if($project->is_completed) checked @endif>
+                        <label class="form-check-label" for="is_completed">{{ $project->is_completed ? 'Completed' : 'Work in progress' }}</label>
+                    </div>
+                </form>
+            </td>
             <td>{{ $project->getFormattedDate('created_at') }}</td>
             <td>{{ $project->getFormattedDate('updated_at') }}</td>
             <td>
@@ -84,4 +91,14 @@
 
 @section('scripts')
   @vite('resources/js/delete_confirmation.js')
+
+  <script>
+    const toggleCompletionForms = document.querySelectorAll('.completion-form')
+
+    toggleCompletionForms.forEach(form => {
+        form.addEventListener('click', () => {
+            form.submit();
+        });
+    })
+  </script>
 @endsection
